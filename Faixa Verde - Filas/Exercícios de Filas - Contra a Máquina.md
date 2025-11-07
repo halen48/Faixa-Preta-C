@@ -36,7 +36,7 @@ void rotacionar_fila(fila *f, int k);
 ```
 
 ### 6. Lista Ordenada
-Implemente funções para manter uma lista ordenada automaticamente. A inserção deve sempre colocar o elemento na posição correta para manter a lista ordenada crescentemente.
+Implemente funções para manter uma lista ordenada automaticamente. A inserção deve sempre colocar o elemento na posição correta para manter a lista ordenada crescentemente. Desconsidere a utilização de estruturas que possuam complexidade ótima para esse tipo de problema.
 
 ```c
 // lista.h
@@ -61,7 +61,7 @@ void lista_fundir_ordenadas(Lista l1, Lista l2, Lista *resultado);
 ```
 
 ### 7. Operações Conjunto
-Implemente operações de conjunto (união, interseção, diferença) sobre listas, tratando cada lista como um conjunto matemático sem elementos repetidos.
+Implemente operações de conjunto (união, interseção, diferença) sobre listas, tratando cada lista como um conjunto matemático sem elementos repetidos. Desconsidere a utilização de estruturas que possuam complexidade ótima para esse tipo de problema.
 
 ```c
 // conjunto.h
@@ -88,7 +88,7 @@ bool conjunto_esta_contido(Conjunto c1, Conjunto c2);
 ```
 
 ### 8. Lista com Operações Estatísticas
-Implemente uma lista com operações estatísticas que calculem medidas de tendência central e dispersão sobre os elementos armazenados.
+Implemente uma lista com operações estatísticas que calculem medidas de tendência central e dispersão sobre os elementos armazenados. Desconsidere a utilização de estruturas que possuam complexidade ótima para esse tipo de problema.
 
 ```c
 // lista_estatistica.h
@@ -118,7 +118,7 @@ void lista_estat_ordenar_crescente(ListaEstatistica *le);
 ```
 
 ### 9. Sistema de Gerenciamento de Tarefas
-Implemente um sistema de gerenciamento de tarefas com prioridades onde tarefas podem ser adicionadas, removidas, reordenadas por prioridade e filtradas por status.
+Implemente um sistema de gerenciamento de tarefas com prioridades onde tarefas podem ser adicionadas, removidas, reordenadas por prioridade e filtradas por status. Desconsidere a utilização de estruturas que possuam complexidade ótima para esse tipo de problema.
 
 ```c
 // tarefas.h
@@ -163,7 +163,7 @@ void tarefas_listar_pendentes(GerenciadorTarefas gt);
 ```
 
 ### 10. Dicionário com Busca por Prefixo
-Implemente um dicionário que armazene palavras e permita buscas eficientes por prefixo, além de operações de autocompletar e sugestões.
+Implemente um dicionário que armazene palavras e permita buscas eficientes por prefixo, além de operações de autocompletar e sugestões. Desconsidere a utilização de estruturas que possuam complexidade ótima para esse tipo de problema.
 
 ```c
 // dicionario.h
