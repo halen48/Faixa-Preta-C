@@ -35,60 +35,89 @@ Desenvolva uma função que rotacione os elementos da fila em K posições. Uma 
 void rotacionar_fila(fila *f, int k);
 ```
 
-### 6. Lista Ordenada
-Implemente funções para manter uma lista ordenada automaticamente. A inserção deve sempre colocar o elemento na posição correta para manter a lista ordenada crescentemente. Desconsidere a utilização de estruturas que possuam complexidade ótima para esse tipo de problema.
+### 6. Fila para Jogo da Batata Quente
+Implemente o jogo da batata quente usando fila circular.
 
 ```c
-// lista.h
-#ifndef _LISTA_H
-#define _LISTA_H
+// batata_quente.h
+#ifndef _BATATA_QUENTE_H
+#define _BATATA_QUENTE_H
 #include <stdbool.h>
 
-#define MAX_LISTA 20
+#define MAX_JOGADORES 8
+#define TAM_NOME_JOGADOR 20
 
-typedef int lista_info;
 typedef struct {
-    lista_info elementos[MAX_LISTA];
-    int tamanho;
-} Lista;
+    int id;
+    char nome[TAM_NOME_JOGADOR];
+} Jogador;
 
-void lista_inicializar(Lista *l);
-bool lista_inserir_ordenado(Lista *l, lista_info valor);
-bool lista_esta_ordenada(Lista l);
-int lista_busca_binaria(Lista l, lista_info valor);
-void lista_fundir_ordenadas(Lista l1, Lista l2, Lista *resultado);
+typedef struct {
+    Jogador jogadores[MAX_JOGADORES];
+    int posicao_batata;
+    int quantidade_jogadores;
+    int jogador_atual;
+} JogoBatataQuente;
+
+void batata_inicializar(JogoBatataQuente *j);
+bool batata_adicionar_jogador(JogoBatataQuente *j, const char *nome);
+bool batata_iniciar_jogo(JogoBatataQuente *j, int posicao_inicial);
+Jogador batata_passar_batata(JogoBatataQuente *j);
+Jogador batata_eliminar_jogador(JogoBatataQuente *j);
+int batata_jogadores_restantes(JogoBatataQuente j);
+void batata_imprimir_estado(JogoBatataQuente j);
+bool batata_jogo_terminou(JogoBatataQuente j);
 #endif
 ```
 
 ### 7. Operações Conjunto
-Implemente operações de conjunto (união, interseção, diferença) sobre listas, tratando cada lista como um conjunto matemático sem elementos repetidos. Desconsidere a utilização de estruturas que possuam complexidade ótima para esse tipo de problema.
+Implemente um sistema de atendimento com filas separadas por prioridade.
+
 
 ```c
-// conjunto.h
-#ifndef _CONJUNTO_H
-#define _CONJUNTO_H
+// sistema_atendimento.h
+#ifndef _SISTEMA_ATENDIMENTO_H
+#define _SISTEMA_ATENDIMENTO_H
 #include <stdbool.h>
 
-#define MAX_CONJUNTO 15
+#define MAX_CLIENTES 20
+#define MAX_FILAS 3
+#define TAM_NOME 30
 
-typedef int conjunto_info;
+typedef enum {
+    NORMAL, PRIORITARIO, URGENTE
+} TipoCliente;
+
 typedef struct {
-    conjunto_info elementos[MAX_CONJUNTO];
-    int cardinalidade;
-} Conjunto;
+    int id;
+    char nome[TAM_NOME];
+    TipoCliente tipo;
+    int tempo_espera;
+} Cliente;
 
-void conjunto_inicializar(Conjunto *c);
-bool conjunto_pertence(Conjunto c, conjunto_info valor);
-bool conjunto_inserir(Conjunto *c, conjunto_info valor);
-void conjunto_uniao(Conjunto c1, Conjunto c2, Conjunto *resultado);
-void conjunto_interseccao(Conjunto c1, Conjunto c2, Conjunto *resultado);
-void conjunto_diferenca(Conjunto c1, Conjunto c2, Conjunto *resultado);
-bool conjunto_esta_contido(Conjunto c1, Conjunto c2);
+typedef struct {
+    Cliente clientes[MAX_CLIENTES];
+    int inicio;
+    int fim;
+    int tamanho;
+} FilaClientes;
+
+typedef struct {
+    FilaClientes filas[MAX_FILAS]; // [0]=Normal, [1]=Prioritário, [2]=Urgente
+    int total_atendidos;
+} SistemaAtendimento;
+
+void sistema_inicializar(SistemaAtendimento *s);
+bool sistema_chegada_cliente(SistemaAtendimento *s, const char *nome, TipoCliente tipo);
+bool sistema_atender_proximo(SistemaAtendimento *s, Cliente *atendido);
+int sistema_quantidade_por_tipo(SistemaAtendimento s, TipoCliente tipo);
+void sistema_imprimir_filas(SistemaAtendimento s);
+bool sistema_esta_vazio(SistemaAtendimento s);
 #endif
 ```
 
 ### 8. Lista com Operações Estatísticas
-Implemente uma lista com operações estatísticas que calculem medidas de tendência central e dispersão sobre os elementos armazenados. Desconsidere a utilização de estruturas que possuam complexidade ótima para esse tipo de problema.
+Implemente uma lista com operações estatísticas que calculem medidas de tendência central e dispersão sobre os elementos armazenados. Desconsidere a utilização de estruturas que possuam complexidade ótima para esse tipo de problema. (Isso é um tipo de fila de prioridade)
 
 ```c
 // lista_estatistica.h
